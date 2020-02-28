@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Camera API</title>
-    <link rel="stylesheet" href="css/base.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="base.css" type="text/css" media="screen" />
   </head>
 
   <body>
@@ -18,5 +18,12 @@
         Android.showCamera(toast);
       }
     </script>
+    <input type=text class=qrcode-text
+    ><label class=qrcode-text-btn>
+       <input type=file
+             accept="image/*"
+             capture=environment
+             tabindex=-1>
+    </label>
   </body>
 </html>
