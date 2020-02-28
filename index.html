@@ -7,15 +7,15 @@
   </head>
 
   <body>
-    <video id="player" controls autoplay></video>
+    <video id="player"  autoplay></video>
     <script>
       const player = document.getElementById("player");
 
       const constraints = {
         video: true,
-        video: {
-          facingMode: "environment"
-        }
+        facingMode: "environment",
+
+        
       };
 
       navigator.mediaDevices.getUserMedia(constraints).then(stream => {
