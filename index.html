@@ -7,23 +7,18 @@
   </head>
 
   <body>
-    <input
-      type="button"
-      value="Say hello"
-      onClick="showCamera('Android! Start Camera')"
-    />
-
-    <script type="text/javascript">
-      function showCamera(toast) {
-        Android.showCamera(toast);
-      }
+    <video id="player" controls autoplay></video>
+    <script>
+      const player = document.getElementById('player');
+    
+      const constraints = {
+        video: true,
+      };
+    
+      navigator.mediaDevices.getUserMedia(constraints)
+        .then((stream) => {
+          player.srcObject = stream;
+        });
     </script>
-    <input type=text class=qrcode-text
-    ><label class=qrcode-text-btn>
-       <input type=file
-             accept="image/*"
-             capture=environment
-             tabindex=-1>
-    </label>
   </body>
 </html>
