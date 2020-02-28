@@ -7,15 +7,15 @@
   </head>
 
   <body>
-    <video id="player"  autoplay></video>
+    <video id="player" webkit-playsinline="true" playsinline="true" autoplay></video>
     <script>
-      const player = document.getElementById("player");
+      const image = document.getElementById("player");
 
       const constraints = {
         video: true,
-        facingMode: "environment",
-
-        
+        video: {
+          facingMode: "environment"
+        }
       };
 
       navigator.mediaDevices.getUserMedia(constraints).then(stream => {
