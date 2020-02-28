@@ -9,16 +9,18 @@
   <body>
     <video id="player" controls autoplay></video>
     <script>
-      const player = document.getElementById('player');
-    
+      const player = document.getElementById("player");
+
       const constraints = {
         video: true,
+        video: {
+          facingMode: "environment"
+        }
       };
-    
-      navigator.mediaDevices.getUserMedia(constraints)
-        .then((stream) => {
-          player.srcObject = stream;
-        });
+
+      navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+        player.srcObject = stream;
+      });
     </script>
   </body>
 </html>
