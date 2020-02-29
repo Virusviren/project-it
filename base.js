@@ -1,43 +1,27 @@
-(function () {
-    var takePicture = document.querySelector("#take-picture"),
-        showPicture = document.querySelector("#show-picture");
+const video = document.querySelector('video');
+const canvas = window.canvas = document.querySelector('canvas');
+canvas.width = 480;
+canvas.height = 360;
 
-    if (takePicture && showPicture) {
-        // Set events
-        takePicture.onchange = function (event) {
-            // Get a reference to the taken picture or chosen file
-            var files = event.target.files,
-                file;
-            if (files && files.length > 0) {
-                file = files[0];
-                try {
-                    // Create ObjectURL
-                    var imgURL = window.URL.createObjectURL(file);
+const button = document.querySelector('button');
+button.onclick = function() {
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+};
 
-                    // Set img src to ObjectURL
-                    showPicture.src = imgURL;
+const constraints = {
+  audio: false,
+  video: true
+};
 
-                    // Revoke ObjectURL
-                    URL.revokeObjectURL(imgURL);
-                }
-                catch (e) {
-                    try {
-                        // Fallback if createObjectURL is not supported
-                        var fileReader = new FileReader();
-                        fileReader.onload = function (event) {
-                            showPicture.src = event.target.result;
-                        };
-                        fileReader.readAsDataURL(file);
-                    }
-                    catch (e) {
-                        //
-                        var error = document.querySelector("#error");
-                        if (error) { 
-                            error.innerHTML = "Neither createObjectURL or FileReader are supported";
-                        }
-                    }
-                }
-            }
-        };
-    }
-})();
+function handleSuccess(stream) {
+  window.stream = stream; // make stream available to browser console
+  video.srcObject = stream;
+}
+
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
+
+navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
