@@ -6,5 +6,5 @@
     top: 0px;
     /* z-index: -1; */
     video::-webkit-media-controls-start-playback-button {
-        display: none;
+        display: none !important;
     }
