@@ -16,6 +16,10 @@
         let str = dataURI.slice(23);
         // alert(str);
         console.log(str);
+        exports.barcode1=(str)=>{
+          return str;
+
+        }
         
         document.querySelector("h1").innerHTML=(str);
       });

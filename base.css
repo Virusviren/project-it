@@ -1,3 +1,7 @@
-h1{
-    display: none;
-}
+/* #canvas,#player{
+    position: absolute;
+    width:320px;
+    height:240px;
+    left: 0px;
+    top: 0px;
+    /* z-index: -1; */
